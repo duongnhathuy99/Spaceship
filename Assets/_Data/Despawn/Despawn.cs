@@ -16,7 +16,7 @@ public abstract class Despawn : SaiMonoBehaviour
         if (!CanDesSpawn()) return;
         DespawnObject();
     }
-    protected virtual void DespawnObject()
+    public virtual void DespawnObject()
     {
         Destroy(transform.parent.gameObject);
     }
