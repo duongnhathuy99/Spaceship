@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JunkRamdom : SaiMonoBehaviour
 {
-    [SerializeField] protected JunkCtrl junkCtrl;
+    [SerializeField] protected JunkSpawnerCtrl junkSpawnerCtrl;
 
     protected override void LoadComponents()
     {
@@ -12,9 +12,9 @@ public class JunkRamdom : SaiMonoBehaviour
     }
     protected virtual void LoadJunkCtrl()
     {
-        if (junkCtrl != null) return;
-        junkCtrl = GetComponent<JunkCtrl>();
-        Debug.Log(transform.name + ":Load JunkCtrl ", gameObject);
+        if (junkSpawnerCtrl != null) return;
+        junkSpawnerCtrl = GetComponent<JunkSpawnerCtrl>();
+        Debug.Log(transform.name + ":Load JunkSpawnerCtrl ", gameObject);
     }
     
     protected void Start()
@@ -23,10 +23,10 @@ public class JunkRamdom : SaiMonoBehaviour
     }
     protected virtual void JunkSpawning()
     {
-        Transform ramPoint = junkCtrl.JunkSpawnPoints.GetRamdom();
+        Transform ramPoint = junkSpawnerCtrl.JunkSpawnPoints.GetRamdom();
         Vector3 pos = ramPoint.position;
         Quaternion rot = transform.rotation;
-        Transform junkRamdom = this.junkCtrl.JunkSpawner.Spawn(JunkSpawner.meteorial, pos, rot);
+        Transform junkRamdom = this.junkSpawnerCtrl.JunkSpawner.Spawn(JunkSpawner.meteorial, pos, rot);
         junkRamdom.gameObject.SetActive(true);
         Invoke(nameof(JunkSpawning), 1f);
     }
