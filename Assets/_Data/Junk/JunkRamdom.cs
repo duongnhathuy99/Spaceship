@@ -8,7 +8,6 @@ public class JunkRamdom : SaiMonoBehaviour
 
     protected override void LoadComponents()
     {
-
         LoadJunkCtrl();
     }
     protected virtual void LoadJunkCtrl()
@@ -17,13 +16,15 @@ public class JunkRamdom : SaiMonoBehaviour
         junkCtrl = GetComponent<JunkCtrl>();
         Debug.Log(transform.name + ":Load JunkCtrl ", gameObject);
     }
+    
     protected void Start()
     {
         JunkSpawning();
     }
     protected virtual void JunkSpawning()
     {
-        Vector3 pos = transform.position;
+        Transform ramPoint = junkCtrl.JunkSpawnPoints.GetRamdom();
+        Vector3 pos = ramPoint.position;
         Quaternion rot = transform.rotation;
         Transform junkRamdom = this.junkCtrl.JunkSpawner.Spawn(JunkSpawner.meteorial, pos, rot);
         junkRamdom.gameObject.SetActive(true);
