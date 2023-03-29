@@ -32,7 +32,23 @@ public class BulletImpact : BulletAbstract
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("co va cham");
+        if (other.transform.parent == bulletCtrl.Shooter) return;
+        //Debug.Log("co va cham");
         bulletCtrl.DamageSender.Send(other.transform);
+        CreateImpactFX();
+    }
+    protected virtual void CreateImpactFX()
+    {
+        string fxName = GetImpactFX();
+
+        Vector3 hitPos = transform.position;
+        Quaternion hitRot = transform.rotation;
+        Transform fxImpact = FXSpawner.Instance.Spawn(fxName, hitPos, hitRot);
+        fxImpact.gameObject.SetActive(true);
+    }
+
+    protected virtual string GetImpactFX()
+    {
+        return FXSpawner.impactBullet;
     }
 }
