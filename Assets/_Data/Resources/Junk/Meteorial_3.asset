@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e34c4488e7580cc4ab85900929797316, type: 3}
-  m_Name: Meteorial_2
+  m_Name: Meteorial_3
   m_EditorClassIdentifier: 
-  junkName: Meteorial_2
-  hpMax: 40
+  junkName: Meteorial_3
+  hpMax: 60
   dropList:
-  - itemSO: {fileID: 11400000, guid: acc9f25f8d7783145a216cb691643fed, type: 2}
+  - itemSO: {fileID: 11400000, guid: 3e5eb52dd31f0744ab623bcef8af5f08, type: 2}
     dropRate: 0
     minDrop: 0
     maxDrop: 0

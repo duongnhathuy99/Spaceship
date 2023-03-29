@@ -22,13 +22,13 @@ public class BulletCtrl : SaiMonoBehaviour
     {
         if (damageSender != null) return;
         damageSender = transform.GetComponentInChildren<DamageSender>();
-        Debug.Log(transform.name + ":Load DamageSender ", gameObject);
+        //Debug.Log(transform.name + ":Load DamageSender ", gameObject);
     }
     protected virtual void LoadBulletDespawn()
     {
         if (bulletDespawn != null) return;
         bulletDespawn = transform.GetComponentInChildren<BulletDespawn>();
-        Debug.Log(transform.name + ":Load BulletDespawn ", gameObject);
+        //Debug.Log(transform.name + ":Load BulletDespawn ", gameObject);
     }
     public virtual void SetShooter(Transform shoot) 
     {

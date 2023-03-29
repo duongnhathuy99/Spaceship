@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34c4488e7580cc4ab85900929797316, type: 3}
-  m_Name: Meteorial_2
+  m_Script: {fileID: 11500000, guid: b57f302c5f06b0f4999587a650ddb64b, type: 3}
+  m_Name: Iron
   m_EditorClassIdentifier: 
-  junkName: Meteorial_2
-  hpMax: 40
-  dropList:
-  - itemSO: {fileID: 11400000, guid: acc9f25f8d7783145a216cb691643fed, type: 2}
-    dropRate: 0
-    minDrop: 0
-    maxDrop: 0
+  itemCore: 1
+  itemName: Iron
