@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34c4488e7580cc4ab85900929797316, type: 3}
   m_Name: Meteorial_2
   m_EditorClassIdentifier: 
-  junkName: Junk
-  hpMax: 20
+  junkName: Meteorial_2
+  hpMax: 45

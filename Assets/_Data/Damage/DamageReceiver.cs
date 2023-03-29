@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageReceiver : SaiMonoBehaviour
+public abstract class DamageReceiver : SaiMonoBehaviour
 {
     [SerializeField] protected float hp;
     [SerializeField] protected float hpmax = 40;
@@ -41,8 +41,5 @@ public class DamageReceiver : SaiMonoBehaviour
         isDead = true;
         OnDead();
     }
-    protected virtual void OnDead()
-    {
-       
-    }
+    protected abstract void OnDead();
 }

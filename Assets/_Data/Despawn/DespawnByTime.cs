@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class DespawnByTime : Despawn
 {
-    [SerializeField] protected float disLimit = 70f;
-    [SerializeField] protected float distance = 0f;
-    [SerializeField] protected Transform mainCam;
+    [SerializeField] protected float delay = 2f;
+    [SerializeField] protected float timer = 0f;
 
     
-    protected override void LoadComponents()
+    protected void OnEnable()
     {
-        LoadCamera();
+        ResetTimer();
     }
 
-    protected virtual void LoadCamera()
+    protected virtual void ResetTimer()
     {
-        if (mainCam != null) return;
-        mainCam = Transform.FindObjectOfType<Camera>().transform;
-        Debug.Log(transform.parent.name + "LoadCamera:"+ gameObject);
+        timer = 0;
     }
     protected override bool CanDesSpawn()
     {
-        distance = Vector3.Distance(transform.position, mainCam.transform.position);
-        if (distance > disLimit) return true;
-        else return false;
+        timer += Time.fixedDeltaTime;
+        if (timer > delay) return true;
+        return false;
     }
 }
