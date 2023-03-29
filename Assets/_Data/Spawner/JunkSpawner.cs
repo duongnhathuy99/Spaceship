@@ -6,7 +6,8 @@ public class JunkSpawner : Spawner
     private static JunkSpawner _instance;
     public static JunkSpawner Instance { get => _instance; }
 
-    public static string meteorial = "Meteorial";
+    public static string meteorial = "Meteorial_1";
+    public static string meteorialTwo = "Meteorial_2";
     protected override void Awake()
     {
         base.Awake();

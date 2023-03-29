@@ -37,7 +37,8 @@ public class JunkSpawnerRamdom : SaiMonoBehaviour
         Transform ramPoint = junkSpawnerCtrl.JunkSpawnPoints.GetRamdom();
         Vector3 pos = ramPoint.position;
         Quaternion rot = transform.rotation;
-        Transform junkRamdom = this.junkSpawnerCtrl.JunkSpawner.Spawn(JunkSpawner.meteorial, pos, rot);
+        Transform prefab = this.junkSpawnerCtrl.JunkSpawner.RandomPrefab();
+        Transform junkRamdom = this.junkSpawnerCtrl.JunkSpawner.Spawn(prefab, pos, rot);
         junkRamdom.gameObject.SetActive(true);
         //Invoke(nameof(JunkSpawning), 5f);
     }

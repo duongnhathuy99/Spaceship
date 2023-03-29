@@ -7,8 +7,13 @@ public class DamageReceiver : SaiMonoBehaviour
     [SerializeField] protected float hp;
     [SerializeField] protected float hpmax = 40;
     [SerializeField] protected bool isDead = false;
-    private void Start()
+    private void OnEnable()
     {
+        Reborn();
+    }
+    protected override void ResetValue()
+    {
+        base.ResetValue();
         Reborn();
     }
     protected virtual void Reborn() 

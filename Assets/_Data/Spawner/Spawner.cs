@@ -51,10 +51,12 @@ public abstract class Spawner : SaiMonoBehaviour
             Debug.LogWarning("Prefab spawn not found "+ prefabName);
             return null; 
         }
-
+        return Spawn(prefab, spawnPos, rotation);
+    }
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    {
         Transform newPrefab = GetObjectFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
-        //newPrefab.parent = holder;
         spawnedCount++;
         return newPrefab;
     }
@@ -86,5 +88,10 @@ public abstract class Spawner : SaiMonoBehaviour
             if (prefab.name == prefabName) return prefab;
         }
         return null;
+    }
+    public virtual Transform RandomPrefab() 
+    {
+        int rand = Random.Range(0, prefabs.Count);
+        return prefabs[rand];
     }
 }
