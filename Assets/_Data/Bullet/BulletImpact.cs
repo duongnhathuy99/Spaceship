@@ -35,9 +35,9 @@ public class BulletImpact : BulletAbstract
         if (other.transform.parent == bulletCtrl.Shooter) return;
         //Debug.Log("co va cham");
         bulletCtrl.DamageSender.Send(other.transform);
-        CreateImpactFX();
+        //CreateImpactFX();
     }
-    protected virtual void CreateImpactFX()
+   /* protected virtual void CreateImpactFX()
     {
         string fxName = GetImpactFX();
 
@@ -50,5 +50,5 @@ public class BulletImpact : BulletAbstract
     protected virtual string GetImpactFX()
     {
         return FXSpawner.impactBullet;
-    }
+    }*/
 }

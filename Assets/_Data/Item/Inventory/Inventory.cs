@@ -8,7 +8,7 @@ public class Inventory : SaiMonoBehaviour
     [SerializeField] protected List<ItemInventory> items;
     private void Start()
     {
-        AddItem(ItemCode.SilvelOre,3);
+       // AddItem(ItemCode.SilvelOre,3);
     }
 
     public virtual bool AddItem(ItemCode itemCode, int addCount) 
