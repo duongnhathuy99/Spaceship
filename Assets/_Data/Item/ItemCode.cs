@@ -1,4 +1,4 @@
-public enum ItemCore
+public enum ItemCode
 {
    NoItem = 0,
    IronOre = 1,

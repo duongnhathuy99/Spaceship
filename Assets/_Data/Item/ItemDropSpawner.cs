@@ -22,8 +22,8 @@ public class ItemDropSpawner : Spawner
     }
     public virtual void Drop(List<DropRate> dropList, Vector3 pos, Quaternion rot)
     {
-        ItemCore itemCore = dropList[0].itemSO.itemCore;
-        Transform itemDrop = Spawn(itemCore.ToString(), pos, rot);
+        ItemCode itemCode = dropList[0].itemSO.itemCode;
+        Transform itemDrop = Spawn(itemCode.ToString(), pos, rot);
         if (itemDrop == null) return;
         itemDrop.gameObject.SetActive(true);
     }
