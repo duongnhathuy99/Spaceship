@@ -15,7 +15,7 @@ MonoBehaviour:
   junkName: Meteorial_1
   hpMax: 20
   dropList:
-  - itemSO: {fileID: 11400000, guid: b36a196afe01c9d41badb24a69f02b21, type: 2}
+  - itemProfileSO: {fileID: 11400000, guid: cf0f70bce34c4044f9dee78985b0380e, type: 2}
     dropRate: 0
     minDrop: 0
     maxDrop: 0
