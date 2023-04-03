@@ -4,9 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class ItemLooter : SaiMonoBehaviour
+public class ItemLooter : InventoryAbstract
 {
-    [SerializeField] protected Inventory inventory;
     [SerializeField] protected SphereCollider _sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
 
@@ -14,7 +13,6 @@ public class ItemLooter : SaiMonoBehaviour
     {
         base.LoadComponents();
         LoadSphereCollider();
-        LoadInventory();
         LoadRigidbody();
     }
     protected virtual void LoadSphereCollider()
@@ -24,12 +22,6 @@ public class ItemLooter : SaiMonoBehaviour
         _sphereCollider.isTrigger = true;
         _sphereCollider.radius = 0.3f;
         Debug.Log(transform.name + ":Load SphereCollider ", gameObject);
-    }
-    protected virtual void LoadInventory()
-    {
-        if (inventory != null) return;
-        inventory = transform.parent.GetComponent<Inventory>();
-        Debug.Log(transform.name + ":Load Inventory ", gameObject);
     }
     protected virtual void LoadRigidbody()
     {
