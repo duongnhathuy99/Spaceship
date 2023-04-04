@@ -26,7 +26,8 @@ public class Inventory : SaiMonoBehaviour
     public virtual bool AddEquipment(ItemInventory itemInventory)
     {
         if (IsInventoryFull()) return false;
-        items.Add(itemInventory);
+        ItemInventory item = itemInventory.Clone();
+        items.Add(item);
         return true;
     }
     public virtual bool AddItem(ItemCode itemCode, int addCount) 

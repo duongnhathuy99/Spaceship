@@ -17,7 +17,7 @@ public class JunkFly : ParentFly
     }
     protected virtual void GetFlyDirection() 
     {
-        Vector3 camPos = GameCrtl.Instance.MainCamera.transform.position;
+        Vector3 camPos = GetCamPos();
         Vector3 objPos = transform.parent.position;
         camPos.x += Random.Range(minCamPos,maxCamPos);
         camPos.y += Random.Range(minCamPos, maxCamPos);
@@ -28,5 +28,11 @@ public class JunkFly : ParentFly
 
         Debug.DrawLine(objPos, objPos + diff * 10, Color.red, Mathf.Infinity);
         //Debug.DrawLine(objPos, camPos, Color.red, Mathf.Infinity);
+    }
+    protected virtual Vector3 GetCamPos()
+    {
+        if (GameCrtl.Instance == null) return Vector3.zero;
+        Vector3 camPos = GameCrtl.Instance.MainCamera.transform.position;
+        return camPos;
     }
 }
