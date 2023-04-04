@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b083b5568873664bbdcf216dcc39378, type: 3}
   m_Name: IronSword
   m_EditorClassIdentifier: 
-  itemCode: 0
-  itemType: 0
-  itemName: no-name
-  defaultMaxStack: 7
-  upgradeLevels: []
+  itemCode: 100
+  itemType: 2
+  itemName: IronSword
+  defaultMaxStack: 1
+  upgradeLevels:
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: cf0f70bce34c4044f9dee78985b0380e, type: 2}
+      itemCount: 2
+    - itemProfile: {fileID: 11400000, guid: d52352e360b6b9d4c86c2c22149a85bd, type: 2}
+      itemCount: 2
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: cf0f70bce34c4044f9dee78985b0380e, type: 2}
+      itemCount: 3
+    - itemProfile: {fileID: 11400000, guid: d52352e360b6b9d4c86c2c22149a85bd, type: 2}
+      itemCount: 3

@@ -8,7 +8,8 @@ public class ItemUpgrade : InventoryAbstract
     [SerializeField] protected int maxLevel = 9;
     void Start()
     {
-        Invoke(nameof(test), 5);
+        Invoke(nameof(test), 2);
+        Invoke(nameof(test), 4);
     }
     protected virtual void test() 
     {

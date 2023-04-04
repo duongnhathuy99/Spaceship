@@ -34,13 +34,13 @@ public class ItemLooter : InventoryAbstract
 
     protected void OnTriggerEnter(Collider other)
     {
-        ItemPickupAble itemPickup = other.GetComponent<ItemPickupAble>();
-        if (itemPickup == null) return;
+        ItemPickupAble itemPickupAble = other.GetComponent<ItemPickupAble>();
+        if (itemPickupAble == null) return;
 
-        ItemCode itemCode = itemPickup.GetItemCode();
-        if (inventory.AddItem(itemCode, 1))
+        ItemInventory itemInventory = itemPickupAble.ItemCtrl.ItemInventory;
+        if (inventory.AddItem(itemInventory))
         {
-            itemPickup.Picked();
+            itemPickupAble.Picked();
         }
         //Debug.Log(other.name);
         //Debug.Log(other.transform.parent.name);

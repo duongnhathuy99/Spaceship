@@ -13,7 +13,22 @@ public class Inventory : SaiMonoBehaviour
         AddItem(ItemCode.SilvelOre, 7);
         AddItem(ItemCode.IronOre, 7);
     }
+    public virtual bool AddItem(ItemInventory itemInventory)
+    {
+        int addCount = itemInventory.itemCount;
+        ItemProfileSO itemProfile = itemInventory.itemProfile;
+        ItemCode itemCode = itemProfile.itemCode;
+        ItemType itemType = itemProfile.itemType;
 
+        if (itemType == ItemType.Equiment) return AddEquipment(itemInventory);
+        return AddItem(itemCode, addCount);
+    }
+    public virtual bool AddEquipment(ItemInventory itemInventory)
+    {
+        if (IsInventoryFull()) return false;
+        items.Add(itemInventory);
+        return true;
+    }
     public virtual bool AddItem(ItemCode itemCode, int addCount) 
     {
         ItemProfileSO itemProfileSO = GetItemProfile(itemCode);
