@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipShooting : MonoBehaviour
+public abstract class ShipShooting : SaiMonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
     [SerializeField] protected float shootDelay = 0.2f;
     [SerializeField] protected float shootTimer = 0f;
     void Update()
     {
-        //Shooting();
+        IsShooting();
     }
     private void FixedUpdate()
     {
-        Shooting();
+        Shooting(); 
        
     }
     protected virtual void Shooting() 
     {
-        //if (!isShooting) return;
-        if (InputManager.Instance.OnFiring == 0) return;
         this.shootTimer += Time.fixedDeltaTime;
+        if (!isShooting) return;
         if (shootTimer < shootDelay) return;
         shootTimer = 0;
+
         Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.parent.rotation;
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
@@ -32,4 +32,5 @@ public class ShipShooting : MonoBehaviour
         bulletCtrl.SetShooter(transform.parent);
         //Debug.Log("Shooting");
     }
+    protected abstract bool IsShooting();
 }

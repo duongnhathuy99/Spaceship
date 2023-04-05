@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawnerRamdom : SaiMonoBehaviour
+public class SpawnerRamdom : SaiMonoBehaviour
 {
-    [SerializeField] protected JunkSpawnerCtrl junkSpawnerCtrl;
+    [SerializeField] protected SpawnerCtrl spawnerCtrl;
     [SerializeField] protected float ramdomDelay = 3f;
     [SerializeField] protected float ramdomTimer = 0f;
     [SerializeField] protected float ramdomJunkLimit = 10f;
     protected override void LoadComponents()
     {
-        LoadJunkCtrl();
+        LoadSpawnerCtrl();
     }
-    protected virtual void LoadJunkCtrl()
+    protected virtual void LoadSpawnerCtrl()
     {
-        if (junkSpawnerCtrl != null) return;
-        junkSpawnerCtrl = GetComponent<JunkSpawnerCtrl>();
-        Debug.Log(transform.name + ":Load JunkSpawnerCtrl ", gameObject);
+        if (spawnerCtrl != null) return;
+        spawnerCtrl = GetComponent<SpawnerCtrl>();
+        Debug.Log(transform.name + ":Load SpawnerCtrl ", gameObject);
     }
     
     protected void Start()
@@ -34,17 +34,17 @@ public class JunkSpawnerRamdom : SaiMonoBehaviour
         if (ramdomTimer < ramdomDelay) return;
         ramdomTimer = 0;
 
-        Transform ramPoint = junkSpawnerCtrl.JunkSpawnPoints.GetRamdom();
+        Transform ramPoint = spawnerCtrl.SpawnPoints.GetRamdom();
         Vector3 pos = ramPoint.position;
         Quaternion rot = transform.rotation;
-        Transform prefab = this.junkSpawnerCtrl.JunkSpawner.RandomPrefab();
-        Transform junkRamdom = this.junkSpawnerCtrl.JunkSpawner.Spawn(prefab, pos, rot);
-        junkRamdom.gameObject.SetActive(true);
+        Transform prefab = this.spawnerCtrl.Spawner.RandomPrefab();
+        Transform enemyRamdom = this.spawnerCtrl.Spawner.Spawn(prefab, pos, rot);
+        enemyRamdom.gameObject.SetActive(true);
         //Invoke(nameof(JunkSpawning), 5f);
     }
     protected virtual bool RamdomReachLimit() 
     {
-        int currentJunk = junkSpawnerCtrl.JunkSpawner.SpawnedCount;
+        int currentJunk = spawnerCtrl.Spawner.SpawnedCount;
         return currentJunk >= ramdomJunkLimit;
     }
 }

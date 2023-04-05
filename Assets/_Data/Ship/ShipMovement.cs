@@ -6,17 +6,13 @@ public class ShipMovement : MonoBehaviour
 {
     [SerializeField] protected Vector3 targetPosition;
     [SerializeField] protected float speed = 0.1f;
-    void FixedUpdate()
+    [SerializeField] protected float distance = 1f;
+    [SerializeField] protected float distanceMin = 1f;
+
+    protected virtual void FixedUpdate()
     {
-        GetTargetPosition();
         LookAtTarget();
         Moving();
-    }
-
-    protected virtual void GetTargetPosition()
-    {
-        targetPosition = InputManager.Instance.MouseWorldPosition;
-        targetPosition.z = 0;
     }
     protected virtual void LookAtTarget()
     {
@@ -27,6 +23,8 @@ public class ShipMovement : MonoBehaviour
     }
     protected virtual void Moving()
     {
+        distance = Vector3.Distance(transform.position, targetPosition);
+        if (distance < distanceMin) return;
         Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, speed);
         transform.parent.position = newPos;
     }
