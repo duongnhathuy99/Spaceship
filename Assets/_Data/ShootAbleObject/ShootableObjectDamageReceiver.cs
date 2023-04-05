@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class ShootableObjectDamageReceiver: DamageReceiver
+public class JunkDamageReceiver : DamageReceiver
 {
-    [Header("ShootableObject")]
+    [Header("Junk")]
     [SerializeField] protected SphereCollider sphereCollider;
-    [SerializeField] protected ShootableObjectCtrl shootableObjectCtrl;
+    [SerializeField] protected JunkCtrl junkCtrl;
     protected override void LoadComponents()
     {
-        LoadShootableObjectCtrl();
+        LoadJunkCtrl();
         LoadSphereCollider();
     }
 
-    protected virtual void LoadShootableObjectCtrl()
+    protected virtual void LoadJunkCtrl()
     {
-        if (shootableObjectCtrl != null) return;
-        shootableObjectCtrl = transform.parent.GetComponent<ShootableObjectCtrl>();
-        Debug.Log(transform.name + ":Load ShootableObjectCtrl ", gameObject);
+        if (junkCtrl != null) return;
+        junkCtrl = transform.parent.GetComponent<JunkCtrl>();
+        Debug.Log(transform.name + ":Load JunkCtrl ", gameObject);
     }
     protected virtual void LoadSphereCollider()
     {
@@ -32,13 +32,13 @@ public class ShootableObjectDamageReceiver: DamageReceiver
     {
         OnDeadFX();
         OnDropDead();
-        shootableObjectCtrl.Despawn.DespawnObject();
+        junkCtrl.JunkDespawn.DespawnObject();
     }
     protected virtual void OnDropDead()
     {
         Vector3 dropPos = transform.position;
         Quaternion dropRot = transform.rotation;
-        ItemDropSpawner.Instance.Drop(shootableObjectCtrl.ShootableObjectSO.dropList, dropPos, dropRot);
+        ItemDropSpawner.Instance.Drop(junkCtrl.ShootableObjectSO.dropList, dropPos, dropRot);
     }
     protected virtual void OnDeadFX()
     {
@@ -52,7 +52,7 @@ public class ShootableObjectDamageReceiver: DamageReceiver
     }
     protected override void Reborn()
     {
-        hpmax = shootableObjectCtrl.ShootableObjectSO.hpMax;
+        hpmax = junkCtrl.ShootableObjectSO.hpMax;
         base.Reborn();
     }
 

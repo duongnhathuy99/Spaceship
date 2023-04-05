@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkCtrl : SaiMonoBehaviour
+public abstract class ShootableObjectCtrl : SaiMonoBehaviour
 {
     [SerializeField] protected Transform model;
     public Transform Model { get => model; }
 
-    [SerializeField] protected JunkDespawn junkDespawn;
-    public JunkDespawn JunkDespawn { get => junkDespawn; }
+    [SerializeField] protected Despawn despawn;
+    public Despawn Despawn { get => despawn; }
 
     [SerializeField] protected ShootableObjectSO shootableObjectSO;
     public ShootableObjectSO ShootableObjectSO { get => shootableObjectSO; }
@@ -16,26 +16,27 @@ public class JunkCtrl : SaiMonoBehaviour
     {
         base.LoadComponents();
         LoadModel();
-        LoadJunkDespawn();
+        LoadDespawn();
         LoadShootableObjectSO();
     }
-    protected virtual void LoadModel() 
+    protected virtual void LoadModel()
     {
         if (model != null) return;
         model = transform.Find("Model");
-        Debug.Log(transform.name + ":Load LoadModel ", gameObject);
+        Debug.Log(transform.name + ": LoadModel ", gameObject);
     }
-    protected virtual void LoadJunkDespawn()
+    protected virtual void LoadDespawn()
     {
-        if (junkDespawn != null) return;
-        junkDespawn = transform.GetComponentInChildren<JunkDespawn>();
-        Debug.Log(transform.name + ":Load LoadJunkDespawn ", gameObject);
+        if (despawn != null) return;
+        despawn = transform.GetComponentInChildren<Despawn>();
+        Debug.Log(transform.name + ": LoadDespawn ", gameObject);
     }
     protected virtual void LoadShootableObjectSO()
     {
         if (shootableObjectSO != null) return;
-        string respath = "ShootableObject/Junk/" + transform.name;
+        string respath = "ShootableObject/"+GetObjectTypeString()+"/" + transform.name;
         shootableObjectSO = Resources.Load<ShootableObjectSO>(respath);
-        Debug.Log(transform.name + ":Load ShootableObjectSO " + respath, gameObject);
+        Debug.Log(transform.name + ": ShootableObjectSO " + respath, gameObject);
     }
+    protected abstract string GetObjectTypeString();
 }
