@@ -12,18 +12,28 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
 
     [SerializeField] protected ShootableObjectSO shootableObjectSO;
     public ShootableObjectSO ShootableObjectSO { get => shootableObjectSO; }
+
+    [SerializeField] protected ObjShooting objShooting;
+    public ObjShooting ObjShooting { get => objShooting; }
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadModel();
         LoadDespawn();
         LoadShootableObjectSO();
+        LoadObjShooting();
     }
     protected virtual void LoadModel()
     {
         if (model != null) return;
         model = transform.Find("Model");
         Debug.Log(transform.name + ": LoadModel ", gameObject);
+    }
+    protected virtual void LoadObjShooting()
+    {
+        if (objShooting != null) return;
+        objShooting = transform.GetComponentInChildren<ObjShooting>();
+        Debug.Log(transform.name + ": LoadObjShooting ", gameObject);
     }
     protected virtual void LoadDespawn()
     {

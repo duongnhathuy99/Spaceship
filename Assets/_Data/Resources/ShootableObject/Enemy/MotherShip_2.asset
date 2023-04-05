@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088095bce8ef64e46b1f490f16d1b854, type: 3}
   m_Name: MotherShip_2
   m_EditorClassIdentifier: 
-  objName: MotherShip_1
+  objName: MotherShip_2
   objectType: 2
   hpMax: 500
   dropList:
