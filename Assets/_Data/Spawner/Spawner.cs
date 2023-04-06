@@ -94,4 +94,8 @@ public abstract class Spawner : SaiMonoBehaviour
         int rand = Random.Range(0, prefabs.Count);
         return prefabs[rand];
     }
+    public virtual void Hold(Transform obj)
+    {
+        obj.parent = this.holder;
+    }
 }

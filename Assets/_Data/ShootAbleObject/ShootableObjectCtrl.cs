@@ -21,6 +21,9 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
 
     [SerializeField] protected ObjLookAtTarget objLookAtTarget;
     public ObjLookAtTarget ObjLookAtTarget { get => objLookAtTarget; }
+
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner { get => spawner; }
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -30,6 +33,7 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
         LoadObjShooting();
         LoadObjMovement();
         LoadObjLookAtTarget();
+        LoadSpawner();
     }
     protected virtual void LoadModel()
     {
@@ -67,6 +71,12 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
         string respath = "ShootableObject/"+GetObjectTypeString()+"/" + transform.name;
         shootableObjectSO = Resources.Load<ShootableObjectSO>(respath);
         Debug.Log(transform.name + ": ShootableObjectSO " + respath, gameObject);
+    }
+    protected virtual void LoadSpawner()
+    {
+        if (spawner != null) return;
+        spawner = transform.parent?.parent?.GetComponent<Spawner>();
+        Debug.Log(transform.name + ": Load Spawner ", gameObject);
     }
     protected abstract string GetObjectTypeString();
 }

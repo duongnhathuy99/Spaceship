@@ -24,7 +24,7 @@ public class SpawnerCtrl : SaiMonoBehaviour
     protected virtual void LoadSpawnPoints()
     {
         if (spawnPoints != null) return;
-        spawnPoints = Transform.FindAnyObjectByType<SpawnPoints>();
+        spawnPoints = GameObject.Find("SceneSpawnPoints").GetComponent<SpawnPoints>();
         Debug.Log(transform.name + ":Load spawnPoints ", gameObject);
     }
 }

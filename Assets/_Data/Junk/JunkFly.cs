@@ -9,7 +9,7 @@ public class JunkFly : ParentFly
     [SerializeField] protected float maxCamPos = 20f;
     protected override void ResetValue()
     {
-        moveSpeed = 0.5f;
+        moveSpeed = 0.3f;
     }
     protected void OnEnable()
     {
