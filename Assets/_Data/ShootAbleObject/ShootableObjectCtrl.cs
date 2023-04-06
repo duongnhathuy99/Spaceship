@@ -15,6 +15,12 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
 
     [SerializeField] protected ObjShooting objShooting;
     public ObjShooting ObjShooting { get => objShooting; }
+
+    [SerializeField] protected ObjMovement objMovement;
+    public ObjMovement ObjMovement { get => objMovement; }
+
+    [SerializeField] protected ObjLookAtTarget objLookAtTarget;
+    public ObjLookAtTarget ObjLookAtTarget { get => objLookAtTarget; }
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -22,6 +28,8 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
         LoadDespawn();
         LoadShootableObjectSO();
         LoadObjShooting();
+        LoadObjMovement();
+        LoadObjLookAtTarget();
     }
     protected virtual void LoadModel()
     {
@@ -40,6 +48,18 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
         if (despawn != null) return;
         despawn = transform.GetComponentInChildren<Despawn>();
         Debug.Log(transform.name + ": LoadDespawn ", gameObject);
+    }
+    protected virtual void LoadObjMovement()
+    {
+        if (objMovement != null) return;
+        objMovement = transform.GetComponentInChildren<ObjMovement>();
+        Debug.Log(transform.name + ": Load objMovement ", gameObject);
+    }
+    protected virtual void LoadObjLookAtTarget()
+    {
+        if (objLookAtTarget != null) return;
+        objLookAtTarget = transform.GetComponentInChildren<ObjLookAtTarget>();
+        Debug.Log(transform.name + ": Load objLookAtTarget ", gameObject);
     }
     protected virtual void LoadShootableObjectSO()
     {
