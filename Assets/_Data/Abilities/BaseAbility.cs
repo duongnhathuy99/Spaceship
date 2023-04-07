@@ -16,6 +16,10 @@ public abstract class BaseAbility : SaiMonoBehaviour
     {
         Timing();
     }
+    protected virtual void Update()
+    {
+       
+    }
     protected override void LoadComponents()
     {
         base.LoadComponents();
