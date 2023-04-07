@@ -19,7 +19,7 @@ public class ItemInventoryDrop : InventoryAbstract
 
         Vector3 dropPos = transform.position;
         dropPos.x += 1;
-        ItemDropSpawner.Instance.Drop(itemInventory, dropPos, transform.rotation);
+        ItemDropSpawner.Instance.DropFromInventory(itemInventory, dropPos, transform.rotation);
         inventory.Items.Remove(itemInventory);
     }
 }
