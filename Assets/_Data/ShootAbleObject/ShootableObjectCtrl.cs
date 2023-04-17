@@ -24,6 +24,9 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
 
     [SerializeField] protected Spawner spawner;
     public Spawner Spawner { get => spawner; }
+
+    [SerializeField] protected DamageReceiver damageReceiver;
+    public DamageReceiver DamageReceiver { get => damageReceiver; }
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -34,6 +37,7 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
         LoadObjMovement();
         LoadObjLookAtTarget();
         LoadSpawner();
+        LoadDamageReceiver();
     }
     protected virtual void LoadModel()
     {
@@ -78,5 +82,12 @@ public abstract class ShootableObjectCtrl : SaiMonoBehaviour
         spawner = transform.parent?.parent?.GetComponent<Spawner>();
         Debug.Log(transform.name + ": Load Spawner ", gameObject);
     }
+    protected virtual void LoadDamageReceiver()
+    {
+        if (damageReceiver != null) return;
+        damageReceiver = transform.GetComponentInChildren<DamageReceiver>();
+        Debug.Log(transform.name + ": Load damageReceiver ", gameObject);
+    }
+    
     protected abstract string GetObjectTypeString();
 }

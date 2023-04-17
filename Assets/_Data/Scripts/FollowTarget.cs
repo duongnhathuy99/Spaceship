@@ -10,9 +10,13 @@ public class FollowTarget : SaiMonoBehaviour
     {
         Following();
     }
-    protected virtual void Following() 
+    protected virtual void Following()
     {
         if (target == null) return;
         transform.position = Vector3.Lerp(transform.position, target.position, Time.fixedDeltaTime * speed);
+    }
+    public virtual void SetTarget(Transform target) 
+    {
+        this.target = target;
     }
 }

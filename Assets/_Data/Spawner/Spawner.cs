@@ -72,7 +72,7 @@ public abstract class Spawner : SaiMonoBehaviour
         }
         Transform newPrefab = Instantiate(prefab);
         newPrefab.name = prefab.name;
-        newPrefab.parent = holder;
+        newPrefab.SetParent(holder);
         return newPrefab;
     }
     public virtual void Despawn(Transform obj) 

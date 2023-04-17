@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider))]
 public abstract class DamageReceiver : SaiMonoBehaviour
 {
-    [SerializeField] protected float hp;
-    [SerializeField] protected float hpmax = 40;
+    [Header("Damage Receiver")]
+    [SerializeField] protected SphereCollider sphereCollider;
+    [SerializeField] protected int hp;
+    [SerializeField] protected int hpmax = 40;
     [SerializeField] protected bool isDead = false;
+    public int HP => hp;
+    public int HPMax => hpmax;
     private void OnEnable()
     {
         Reborn();
@@ -20,18 +25,18 @@ public abstract class DamageReceiver : SaiMonoBehaviour
     {
         hp = hpmax;
     }
-    public virtual void Add(float add)
+    public virtual void Add(int add)
     {
         hp += add;
         if (hp > hpmax) hp = hpmax;
     }
-    public virtual void Deduct(float deduct)
+    public virtual void Deduct(int deduct)
     {
         hp -= deduct;
         if (hp < 0) hp = 0;
         CheckIsDead();
     }
-    protected virtual bool IsDead()
+    public virtual bool IsDead()
     {
         return hp <= 0;
     }
